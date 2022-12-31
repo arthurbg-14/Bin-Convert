@@ -1,2 +1,3 @@
-# Bin-Convert
-Binary Converter (Bin->Dec and Dec->Bin)
+Demo: https://bin-convert-beta.vercel.app/
+
+![plot](./example.png)

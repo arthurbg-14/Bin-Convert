@@ -1,0 +1,51 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <label class="tittle" for="hud">BINARY CONVERTER</label>
+    <div id="hud" class="hud">
+        <input id="input" class="range" type="number" oninput="convert()" placeholder="Binary or Decimal">
+        <h1 style="margin-top: 100px" id="number">0</h1>
+    </div>
+    <script>
+        function convert(){
+            var input = document.getElementById("input").value
+            var number = document.getElementById("number")
+
+            var is_binary = true
+            for (let i = 0; i < input.length; i++) {
+                if((input.charAt(i) != 0)&&(input.charAt(i) != 1)){
+                    is_binary = false
+                }
+            }
+            
+            if(is_binary){
+                var decimal = 0
+                for (let i = 0; i < input.length; i++) {
+                    if(input.charAt(i)!=0){
+                        decimal += 2**(input.length-1-i)
+                    }
+                }
+            }
+            else{
+                var binary = ""
+                while (input > 0) {
+                    if (input & 1) {
+                        binary = "1" + binary;
+                    } else {
+                        binary = "0" + binary;
+                    }
+                    input = input >> 1;
+                    }
+            }
+
+            if(binary){
+                number.innerHTML = `Binary: <br />${binary}`
+            }
+            if(decimal){
+                number.innerHTML = `Decimal: <br />${decimal}`
+            }
+        
+        }
+    </script>
+</body>
